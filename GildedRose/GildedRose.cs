@@ -10,7 +10,16 @@ namespace GildedRoseKata
             this.Items = Items;
         }
 
-        public void UpdateQuality()
+        public void UpdateQuality(IList<Item> Items)
+        {
+            for (var i = 0; i < Items.Count; i++)
+            {
+                Item item = Items[i];
+                UpdateItem(Item item);
+            }
+
+        }
+        private void UpdateItem(Item item)
         {
             for (var i = 0; i < Items.Count; i++)
             {
