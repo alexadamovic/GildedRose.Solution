@@ -101,5 +101,41 @@ namespace GildedRoseTests
             app.UpdateQuality();
             Assert.Equal(80, Items[0].Quality);
         }
+
+        [Fact]
+        public void backstagePasses_QualityIncreasesWithUpdateQuality()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 20, Quality = 0 } };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+            Assert.Equal(1, Items[0].Quality);
+        }
+
+        [Fact]
+        public void backstagePasses_QualityIncreasesByTwoWhenTenDaysOrLessWithUpdateQuality()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 0 } };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+            Assert.Equal(2, Items[0].Quality);
+        }
+
+        [Fact]
+        public void backstagePasses_QualityIncreasesByThreeWhenFiveDaysOrLessWithUpdateQuality()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 0 } };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+            Assert.Equal(3, Items[0].Quality);
+        }
+
+        [Fact]
+        public void backstagePasses_QualityDropsToZeroBySellInWithUpdateQuality()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 0, Quality = 10 } };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+            Assert.Equal(0, Items[0].Quality);
+        }
     }
 }
