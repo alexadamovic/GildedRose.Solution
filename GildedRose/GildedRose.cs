@@ -26,10 +26,10 @@ namespace GildedRoseKata
                 item.SellIn = item.SellIn - 1;
             }
 
-            changeQuality(item);
+            ChangeQuality(item);
         }
 
-        private void changeQuality(Item item)
+        private void ChangeQuality(Item item)
         {
             if ((item.Name == "Aged Brie" || item.Name == "Backstage passes to a TAFKAL80ETC concert") && item.Quality < 50) 
             {
