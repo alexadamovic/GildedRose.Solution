@@ -91,5 +91,22 @@ namespace GildedRoseKata
                 }
             }
         }
+
+        private void changeQuality(Item item)
+        {
+            if (item.Name == "Aged Brie" || item.Name == "Backstage passes to a TAFKAL80ETC concert") 
+            {
+                item.Quality += 1;
+            }
+            if (item.Name == "Backstage passes to a TAFKAL80ETC concert" && item.SellIn < 11)
+            {
+                item.Quality += 1;
+            }
+            if (item.Name == "Backstage passes to a TAFKAL80ETC concert" && item.SellIn < 6)
+            {
+                item.Quality += 1;
+            }
+            if (item.)
+        }
     }
 }
