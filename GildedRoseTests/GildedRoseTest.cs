@@ -137,5 +137,14 @@ namespace GildedRoseTests
             app.UpdateQuality();
             Assert.Equal(0, Items[0].Quality);
         }
+
+        [Fact]
+        public void conjured_QualityDropsByTwoWithUpdateQuality()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Conjured Mana Cake", SellIn = 2, Quality = 3 } };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+            Assert.Equal(1, Items[0].Quality);
+        }
     }
 }
